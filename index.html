@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ayu Touch | Student-Friendly Digital Services</title>
+    <meta name="description" content="Affordable tech services for students - Google Forms, Sheets, PC setup, and digital accounts at budget prices">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div>
+                    <div class="logo-text">The Ayu Touch</div>
+                    <div class="tagline">Easy, Smart & Student-Friendly</div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Digital Services Made Affordable for Students</h1>
+            <p>Get professional help with Google Forms, Sheets, PC setup and more at prices that won't break your budget</p>
+            <a href="services.html" class="btn">Explore Services</a>
+        </div>
+    </div>
+
+    <main>
+        <section>
+            <h2 class="section-title">Why Students Love Us</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-rupee-sign"></i></div>
+                    <h3 class="service-name">Budget-Friendly</h3>
+                    <p class="service-desc">Services start at just ₹29, designed specifically for student budgets.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="service-name">Quick Turnaround</h3>
+                    <p class="service-desc">Most services completed within 24 hours so you don't miss deadlines.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="service-name">Student-Focused</h3>
+                    <p class="service-desc">We understand academic needs - from forms to project setups.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div class="logo-text">The Ayu Touch</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="order.html">Order</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="copyright">
+    &copy; The Ayu Touch. Made with heart, for those who dare to dream.
+</div>
+
+        </div>
+    </footer>
+
+    <div class="scroll-indicator"></div>
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        // Scroll percentage indicator
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  
+  window.addEventListener('scroll', () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolledPercentage = (window.scrollY / scrollableHeight) * 100;
+    scrollIndicator.style.width = `${scrolledPercentage}%`;
+  });
+
+  
+    </script>
+    
+</body>
+</html>

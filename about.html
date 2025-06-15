@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | The Ayu Touch</title>
+    <meta name="description" content="Learn about The Ayu Touch - our mission to provide affordable digital services to students and small businesses.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div>
+                    <div class="logo-text">The Ayu Touch</div>
+                    <div class="tagline">Easy, Smart & Student-Friendly</div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <!-- <div class="about-content">
+                <h1 class="section-title">About The Ayu Touch</h1>
+                
+                <div class="about-section">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2023, The Ayu Touch was born out of frustration with how expensive and complicated basic digital services were for students. We wanted to create a service that was both affordable and easy to use.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h2>Our Mission</h2>
+                    <p>To empower students by removing technical barriers through affordable, high-quality digital services that save time and reduce stress.</p>
+                </div>
+                
+                <div class="about-section">
+                    <h2>Why Choose Us?</h2>
+                    <ul>
+                        <li><strong>Student-First Pricing:</strong> Services start at just ₹29</li>
+                        <li><strong>Quick Turnaround:</strong> Most services completed within 24 hours</li>
+                        <li><strong>Simple Process:</strong> No complicated tech jargon</li>
+                        <li><strong>Educational Approach:</strong> We explain how things work</li>
+                        <li><strong>Reliable Support:</strong> Available via WhatsApp for quick help</li>
+                    </ul>
+                </div>
+                
+                <div class="about-section">
+                    <h2>Our Values</h2>
+                    <p>We believe in transparency, affordability, and education. Every service we provide comes with clear pricing and explanations, because we want our customers to learn as they use our services.</p>
+                </div>
+            </div>  -->
+            <div class="about-content">
+    <h1 class="section-title">About The Ayu Touch</h1>
+    
+    <div class="about-section">
+        <h2>Our Story</h2>
+        <p>The Ayu Touch began as a heartfelt idea—a wish to make digital help feel less like a service and more like support from a friend. We saw students and small creators struggling with costs, confusion, and time pressure. So we stepped in, not as a big company, but as someone who understands what it feels like to be overwhelmed and under-supported.</p>
+    </div>
+    
+    <div class="about-section">
+        <h2>Our Mission</h2>
+        <p>We exist to uplift—one student, one small business, one dream at a time. Our mission is to simplify the digital world so that anyone, regardless of background or budget, can access the tools they need to grow with confidence and ease.</p>
+    </div>
+    
+    <div class="about-section">
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li><strong>Student-First Pricing:</strong> Starting from just ₹29—designed with your wallet in mind</li>
+            <li><strong>Speed that Respects Your Deadlines:</strong> Most services delivered within 24 hours</li>
+            <li><strong>No Tech Confusion:</strong> We speak your language, not in code</li>
+            <li><strong>Learn As You Go:</strong> We don't just do it for you—we show you how it works</li>
+            <li><strong>Support That Cares:</strong> Real help on WhatsApp, whenever you need it</li>
+        </ul>
+    </div>
+    
+    <div class="about-section">
+        <h2>Our Values</h2>
+        <p>At the heart of The Ayu Touch is care. We care about affordability, clarity, and helping you grow. Every click, every design, and every message is built on a promise: to treat your dreams with the same respect and effort as we treat our own.</p>
+    </div>
+</div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div class="logo-text">The Ayu Touch</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="order.html">Order</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="copyright">
+    &copy; The Ayu Touch. Made with heart, for those who dare to dream.
+</div>
+
+        </div>
+    </footer>
+
+    <div class="scroll-indicator"></div>
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        // Scroll percentage indicator
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  
+  window.addEventListener('scroll', () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolledPercentage = (window.scrollY / scrollableHeight) * 100;
+    scrollIndicator.style.width = `${scrolledPercentage}%`;
+  });
+
+  
+    </script>
+</body>
+</html>

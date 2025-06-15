@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order | The Ayu Touch</title>
+    <meta name="description" content="Order affordable digital services from The Ayu Touch. Get started with our simple order process.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Comfortaa:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div>
+                    <div class="logo-text">The Ayu Touch</div>
+                    <div class="tagline">Easy, Smart & Student-Friendly</div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="order-container">
+                <h1 class="section-title">Place Your Order</h1>
+                <p class="text-center">Click the button below to access our order form:</p>
+                
+                <div class="text-center mt-3">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRvBSm0HFUEhjq1SvuSpwlSJ2SHHON9y_knOVV9Z81SA6BOA/viewform?usp=header" class="btn" target="_blank">
+                        <i class="fas fa-file-alt"></i> Go to Order Form
+                    </a>
+                </div>
+                
+                <div class="order-warning mt-3">
+                    <p><i class="fas fa-exclamation-triangle order-warning-icon"></i> 
+                    <strong>Important:</strong> We will never ask for your credit card details via WhatsApp or email. 
+                    Only make payments through secure platforms after service confirmation.</p>
+                </div>
+                
+                <div class="mt-3">
+                    <h3>How It Works:</h3>
+                    <ol>
+                        <li>Fill out the order form with your requirements</li>
+                        <li>We'll contact you within 24 hours with a quote</li>
+                        <li>Make payment only after confirmation</li>
+                        <li>Receive your completed service within the promised timeframe</li>
+                    </ol>
+                </div>
+
+                
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <span class="logo-icon">💫</span>
+                <div class="logo-text">The Ayu Touch</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="order.html">Order</a>
+                <a href="contact.html">Contact</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="copyright">
+    &copy; The Ayu Touch. Made with heart, for those who dare to dream.
+</div>
+
+        </div>
+    </footer>
+
+    <div class="scroll-indicator"></div>
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        // Scroll percentage indicator
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  
+  window.addEventListener('scroll', () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolledPercentage = (window.scrollY / scrollableHeight) * 100;
+    scrollIndicator.style.width = `${scrolledPercentage}%`;
+  });
+
+  
+    </script>
+</body>
+</html>
