@@ -3,36 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cute Website</title>
     
+    <title>BloomingTwins | Cute Tech & Creative Services</title>
+    <meta name="description" content="Welcome to BloomingTwins! We offer cute web design, Google Form creation, OS installs, and other magical tech solutions.">
+    <meta name="author" content="BloomingTwins">
+    <meta name="theme-color" content="#C3B1E1"> 
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    
-
-    <nav>
-        <a href="#" class="logo" data-page="home">🌸 BloomingTwins</a>
-        
-        <ul class="nav-links">
-            <li><a href="#" data-page="home" class="nav-link active-link">Home</a></li>
-            <li><a href="#" data-page="about" class="nav-link">About</a></li>
-            <li><a href="#" data-page="services" class="nav-link">Services</a></li>
-            <li><a href="#" data-page="portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#" data-page="contact" class="nav-link">Contact Us</a></li>
-            <li><a href="#" data-page="booking" class="nav-link">Book Now</a></li>
-            <li class="theme-toggle-li">
-                <button id="theme-toggle" class="theme-btn">🌙</button>
-            </li>
-        </ul>
-        
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-xmark"></i>
-        </button>
-    </nav>
+    <header>
+        <nav>
+            <a href="#" class="logo" data-page="home">
+                <img src="img/logo.png" alt="BloomingTwins Logo">
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#" data-page="home" class="nav-link active-link">Home</a></li>
+                <li><a href="#" data-page="about" class="nav-link">About</a></li>
+                <li><a href="#" data-page="services" class="nav-link">Services</a></li>
+                <li><a href="#" data-page="portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#" data-page="contact" class="nav-link">Contact Us</a></li>
+                <li><a href="#" data-page="booking" class="nav-link">Book Now</a></li>
+                <li class="theme-toggle-li">
+                    <button id="theme-toggle" class="theme-btn">🌙</button>
+                </li>
+            </ul>
+            
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-xmark"></i>
+            </button>
+        </nav>
+    </header>
 
     <main>
         <section id="home" class="page active">

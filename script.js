@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- End of Typing Particle Effect ---
 
     // --- 💖 NEW: Mouse Sparkle Trail ---
-    let isThrottled = false;
+    let isMouseThrottled = false; // Renamed to avoid conflict
     const sparkleColors = [
         'var(--primary-color)',
         'var(--secondary-color)',
@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     document.addEventListener('mousemove', (e) => {
-        if (isThrottled) return;
-        isThrottled = true;
+        if (isMouseThrottled) return; // Use the renamed variable
+        isMouseThrottled = true; // Use the renamed variable
         setTimeout(() => {
-            isThrottled = false;
+            isMouseThrottled = false; // Use the renamed variable
         }, 50);
 
         const particle = document.createElement('div');

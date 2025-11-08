@@ -64,11 +64,8 @@ p {
 }
 
 /* ---  navegación (Navigation) --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
+/* NEW: <header> is used to wrap nav */
+header {
     background-color: var(--container-color);
     box-shadow: 0 4px 15px var(--nav-shadow);
     position: sticky;
@@ -77,15 +74,30 @@ nav {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-nav .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    z-index: 1002; /* Keep logo on top of mobile menu */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px; /* Constrain nav width */
+    margin: 0 auto; /* Center nav */
 }
 
-/* UPDATED: Renamed ul to .nav-links */
+nav .logo {
+    text-decoration: none;
+    z-index: 1002; /* Keep logo on top of mobile menu */
+    display: block; /* Helps with alignment */
+}
+nav .logo img {
+    height: 40px;  /* <-- You can adjust this height! */
+    display: block; /* Fixes extra spacing */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+nav .logo:hover img {
+    transform: scale(1.05);
+}
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -119,45 +131,53 @@ nav .logo {
     cursor: pointer;
     z-index: 1002; /* Keep button on top of mobile menu */
 }
-
-/* Hide the 'X' icon by default */
 .hamburger-btn .fa-xmark {
     display: none;
 }
-
-/* Show the 'X' icon when the menu is open */
 nav.menu-open .hamburger-btn .fa-xmark {
     display: block;
 }
-
-/* Hide the 'bars' icon when the menu is open */
 nav.menu-open .hamburger-btn .fa-bars {
     display: none;
 }
 
 
-/* --- 📄 Page Switching Logic --- */
+/* --- 📄 Page Switching Logic (FIXED) --- */
 main {
     position: relative;
+    /* This prevents margin collapse from the .container */
+    padding-top: 1px;
+    margin-top: -1px;
 }
-/* ... (rest of your page styles are unchanged) ... */
 
 .page {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* Hides pages by default, removing them from the layout */
+    display: none;
     width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    
+    /* Set up the animation for when it appears */
+    animation: fadeInPage 0.5s ease-out forwards;
 }
 
 .page.active {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    /* Show the active page */
+    display: block;
+    
+    /* NEW: Make page fill at least the viewable screen */
+    /* 100vh - (approx 60px for nav) - (110px for footer padding) */
+    min-height: calc(100vh - 170px); 
+}
+
+/* This new keyframe animation will handle the fade-in */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --- 🎨 Page-Specific Styles --- */
@@ -168,11 +188,11 @@ main {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 #home h1 {
-    color: var(--text-color-light); /* Changed */
+    color: var(--text-color-light); 
     font-size: 3rem;
 }
 #home p {
-    color: var(--text-color-light); /* Changed */
+    color: var(--text-color-light); 
     font-size: 1.2rem;
 }
 
@@ -255,6 +275,17 @@ main {
 .form-group textarea:focus {
     outline: none;
     box-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* --- NEW: Security Note Style --- */
+.security-note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ✨ Cute Button */
@@ -426,7 +457,6 @@ nav ul li.theme-toggle-li {
 
     /* --- Mobile Nav --- */
     .nav-links {
-        /* This creates the slide-out menu */
         position: fixed;
         top: 0;
         left: 0;
@@ -435,13 +465,9 @@ nav ul li.theme-toggle-li {
         padding-top: 5rem;
         background-color: var(--bg-color);
         z-index: 1001;
-        
-        /* Stack links vertically */
         flex-direction: column;
         justify-content: flex-start;
         gap: 2rem;
-        
-        /* Hide it off-screen */
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
     }
@@ -451,25 +477,23 @@ nav ul li.theme-toggle-li {
     }
     
     .nav-links li a {
-        font-size: 1.5rem; /* Make mobile links bigger */
+        font-size: 1.5rem; 
     }
     
     .nav-links li.theme-toggle-li {
-        /* Make theme toggle bigger for mobile */
         transform: scale(1.2);
     }
 
     .hamburger-btn {
-        display: block; /* Show hamburger on mobile */
+        display: block; 
     }
     
     nav {
-        padding: 1rem 1.5rem; /* Reduce nav padding */
+        padding: 1rem 1.5rem; 
     }
     
     /* --- General Mobile Styles --- */
     body {
-        /* Adjust footer padding for mobile */
         padding-bottom: 95px;
     }
     
@@ -479,7 +503,7 @@ nav ul li.theme-toggle-li {
     }
     
     #home h1 {
-        font-size: 2.2rem; /* Reduce heading size */
+        font-size: 2.2rem; 
     }
     
     /* --- Mobile Footer --- */
@@ -503,3 +527,43 @@ nav ul li.theme-toggle-li {
     }
 }
 
+/* --- Background for About Page --- */
+#about {
+    position: relative; 
+    overflow: hidden; 
+    z-index: 1; 
+}
+
+/* Create the background image layer */
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%; /* <-- FIXED */
+    background-image: url('../img/about-bg.png'); /* Adjust path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; 
+    filter: blur(5px); 
+    transform: scale(1.02); 
+}
+
+/* Optional: Make the container text more readable */
+#about .container {
+    background-color: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(0px); 
+    -webkit-backdrop-filter: blur(5px); 
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    position: relative; 
+    z-index: 2; 
+}
+
+/* Dark Mode Adjustments for About Page Background */
+body.dark-mode #about .container {
+    background-color: rgba(62, 53, 97, 0.7); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
