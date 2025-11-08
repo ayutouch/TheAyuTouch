@@ -37,7 +37,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    padding-bottom: 70px; 
+    /* UPDATED: Fixed footer padding */
+    padding-bottom: 110px; 
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -81,16 +82,18 @@ nav .logo {
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
+    z-index: 1002; /* Keep logo on top of mobile menu */
 }
 
-nav ul {
+/* UPDATED: Renamed ul to .nav-links */
+.nav-links {
     display: flex;
     list-style: none;
     gap: 1.5rem;
     align-items: center;
 }
 
-nav ul li a {
+.nav-links li a {
     text-decoration: none;
     color: var(--text-color); /* Uses main text color */
     font-weight: 700;
@@ -99,17 +102,45 @@ nav ul li a {
     transition: all 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active-link {
+.nav-links li a:hover,
+.nav-links li a.active-link {
     background-color: var(--primary-color);
     color: var(--container-color);
     transform: scale(1.1);
 }
 
+/* --- 🍔 NEW: Hamburger Button --- */
+.hamburger-btn {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1002; /* Keep button on top of mobile menu */
+}
+
+/* Hide the 'X' icon by default */
+.hamburger-btn .fa-xmark {
+    display: none;
+}
+
+/* Show the 'X' icon when the menu is open */
+nav.menu-open .hamburger-btn .fa-xmark {
+    display: block;
+}
+
+/* Hide the 'bars' icon when the menu is open */
+nav.menu-open .hamburger-btn .fa-bars {
+    display: none;
+}
+
+
 /* --- 📄 Page Switching Logic --- */
 main {
     position: relative;
 }
+/* ... (rest of your page styles are unchanged) ... */
 
 .page {
     position: absolute;
@@ -137,11 +168,11 @@ main {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 #home h1 {
-    color: #5e5e5e; /* Changed */
+    color: var(--text-color-light); /* Changed */
     font-size: 3rem;
 }
 #home p {
-    color: #a476a8; /* Changed */
+    color: var(--text-color-light); /* Changed */
     font-size: 1.2rem;
 }
 
@@ -157,12 +188,9 @@ main {
     border-radius: 10px;
     text-align: center;
     border: 2px solid var(--primary-color);
-    /* Updated transition for the 3D effect */
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
 }
 .service-card:hover {
-    /* This creates the 3D "pop" effect */
-    /* transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05); */
     box-shadow: 0 20px 40px rgba(195, 177, 225, 0.6);
 }
 .service-card .icon {
@@ -183,7 +211,6 @@ main {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     cursor: pointer;
-    /* Add transition for the new effect */
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .portfolio-item img {
@@ -191,17 +218,11 @@ main {
     height: 100%;
     display: block;
     object-fit: cover;
-    /* We'll keep the image zoom, but on the main item's hover */
     transition: transform 0.4s ease;
 }
-
-/* New 3D hover effect for the whole item */
 .portfolio-item:hover {
-    /* transform: perspective(1000px) scale(1.03); */
     box-shadow: 0 15px 30px rgba(195, 177, 225, 0.5);
 }
-
-/* This makes the image zoom *inside* the 3D-tilted card */
 .portfolio-item:hover img {
     transform: scale(1.1);
 }
@@ -269,26 +290,22 @@ footer {
     z-index: 100;
     transition: background-color 0.3s ease, color 0.3s ease;
     
-    /* --- ADD THESE 4 LINES --- */
+    /* UPDATED: Stacks links and text */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 /* --- 💖 3D Social Icons --- */
-
-/* Adjust the copyright text margin */
 footer p {
     margin-bottom: 0;
     font-size: 0.9rem;
 }
-
 .social-links {
     display: flex;
     gap: 1rem;
     margin-bottom: 0.75rem;
 }
-
 .social-icon {
     font-size: 1.1rem;
     color: var(--primary-color);
@@ -301,28 +318,19 @@ footer p {
     justify-content: center;
     text-decoration: none;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    
-    /* 3D and animation setup */
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
     transform: perspective(1000px); /* Prepare for 3D */
 }
-
-/* 3D Animated Hover Effect */
 .social-icon:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     transform: perspective(1000px) translateY(-5px) rotateX(15deg) scale(1.1);
     color: var(--container-color); /* White text */
 }
-
-/* Cute hover colors! */
 #social-insta:hover {
     background: linear-gradient(45deg, #f09433 0%,#e61e6e 50%,#8a3ab9 100%);
 }
 #social-wa:hover {
     background-color: #25D366;
-}
-#social-git:hover {
-    background-color: #333;
 }
 #social-email:hover {
     background-color: var(--secondary-color); /* Pink */
@@ -333,7 +341,6 @@ nav ul li.theme-toggle-li {
     display: flex;
     align-items: center;
 }
-
 .theme-btn {
     background: none;
     border: 2px solid var(--primary-color);
@@ -348,7 +355,6 @@ nav ul li.theme-toggle-li {
     align-items: center;
     justify-content: center;
 }
-
 .theme-btn:hover {
     background-color: var(--primary-color);
     color: var(--container-color);
@@ -356,10 +362,10 @@ nav ul li.theme-toggle-li {
 
 /* --- Price Notification --- */
 .price-note {
-    display: none; /* Hidden by default */
+    display: none; 
     margin-top: 1rem;
     padding: 0.75rem 1rem;
-    background-color: var(--service-card-bg); /* Use a light bg */
+    background-color: var(--service-card-bg);
     border: 2px dashed var(--primary-color);
     border-radius: 15px;
     color: var(--text-color);
@@ -369,10 +375,8 @@ nav ul li.theme-toggle-li {
     transition: all 0.3s ease;
 }
 /* --- 💖 Mouse Sparkle Effect --- */
-
-/* This defines the particle itself */
 .particle {
-    position: fixed; /* Stays in the viewport */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 10px;
@@ -380,43 +384,31 @@ nav ul li.theme-toggle-li {
     background-color: var(--primary-color);
     border-radius: 50%;
     z-index: 9999;
-    
-    /* This is crucial! It lets you click "through" the particles */
     pointer-events: none;
-    
-    /* Use our new animation */
     animation: sparkle 0.8s forwards ease-out;
 }
-
-/* This is the animation */
 @keyframes sparkle {
     0% {
-        /* Start at full size and opacity */
         opacity: 1;
         transform: scale(1);
     }
     100% {
-        /* End at zero size, faded out, and moved */
         opacity: 0;
-        /* It will move to the random --x and --y values we set in JavaScript */
         transform: scale(0) translate(var(--x, 0), var(--y, 0));
     }
 }
 
 /* --- ⌨️ Typing Particle Effect --- */
 .typing-particle {
-    position: absolute; /* Positioned relative to the page */
+    position: absolute; 
     width: 6px;
     height: 6px;
     background-color: var(--secondary-color);
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
-    
-    /* New animation for a 'burst' effect */
     animation: burst 0.6s forwards ease-out;
 }
-
 @keyframes burst {
     0% {
         opacity: 1;
@@ -424,7 +416,90 @@ nav ul li.theme-toggle-li {
     }
     100% {
         opacity: 0;
-        /* Move in a random arc, up and out */
         transform: scale(0) translate(var(--x, 0), var(--y, -50px));
     }
 }
+
+
+/* --- 📱 NEW: Responsive Media Query --- */
+@media (max-width: 850px) {
+
+    /* --- Mobile Nav --- */
+    .nav-links {
+        /* This creates the slide-out menu */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding-top: 5rem;
+        background-color: var(--bg-color);
+        z-index: 1001;
+        
+        /* Stack links vertically */
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 2rem;
+        
+        /* Hide it off-screen */
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .nav-links.nav-open {
+        transform: translateX(0);
+    }
+    
+    .nav-links li a {
+        font-size: 1.5rem; /* Make mobile links bigger */
+    }
+    
+    .nav-links li.theme-toggle-li {
+        /* Make theme toggle bigger for mobile */
+        transform: scale(1.2);
+    }
+
+    .hamburger-btn {
+        display: block; /* Show hamburger on mobile */
+    }
+    
+    nav {
+        padding: 1rem 1.5rem; /* Reduce nav padding */
+    }
+    
+    /* --- General Mobile Styles --- */
+    body {
+        /* Adjust footer padding for mobile */
+        padding-bottom: 95px;
+    }
+    
+    .container {
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+    
+    #home h1 {
+        font-size: 2.2rem; /* Reduce heading size */
+    }
+    
+    /* --- Mobile Footer --- */
+    footer {
+        padding: 1rem;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .social-links {
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
