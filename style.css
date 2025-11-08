@@ -1,0 +1,430 @@
+/* --- 🎨 Color Palette --- */
+:root {
+    /* Light Mode (Default) */
+    --bg-color: #FDF7FF;
+    --primary-color: #C3B1E1;
+    --secondary-color: #FFC7EA;
+    --text-color: #2D2A4A; /* CHANGED to a very dark purple */
+    --text-color-light: #FDF7FF; /* This is your very light text for footer/home */
+    --container-color: #FFFFFF;
+    --service-card-bg: #FDF7FF;
+    --container-shadow: rgba(195, 177, 225, 0.3);
+    --nav-shadow: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode {
+    /* Dark Mode */
+    --bg-color: #2D2A4A;
+    --primary-color: #C3B1E1;
+    --secondary-color: #FFC7EA;
+    --text-color: #F0EAFE; /* Main text is light in dark mode */
+    --text-color-light: #F0EAFE; /* Footer/home text is also light */
+    --container-color: #3E3561;
+    --service-card-bg: #4A4178;
+    --container-shadow: rgba(0, 0, 0, 0.2);
+    --nav-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* --- 🌐 Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-bottom: 70px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 {
+    color: var(--text-color); /* Uses main text color */
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-color); /* Uses main text color */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--container-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--container-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease; /* Added transform */
+}
+
+/* ---  navegación (Navigation) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--container-color);
+    box-shadow: 0 4px 15px var(--nav-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color); /* Uses main text color */
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active-link {
+    background-color: var(--primary-color);
+    color: var(--container-color);
+    transform: scale(1.1);
+}
+
+/* --- 📄 Page Switching Logic --- */
+main {
+    position: relative;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.page.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- 🎨 Page-Specific Styles --- */
+
+/* Home (Landing Page) */
+#home .container {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+#home h1 {
+    color: #5e5e5e; /* Changed */
+    font-size: 3rem;
+}
+#home p {
+    color: #a476a8; /* Changed */
+    font-size: 1.2rem;
+}
+
+/* Services (Cards) */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.service-card {
+    background-color: var(--service-card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--primary-color);
+    /* Updated transition for the 3D effect */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+}
+.service-card:hover {
+    /* This creates the 3D "pop" effect */
+    /* transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05); */
+    box-shadow: 0 20px 40px rgba(195, 177, 225, 0.6);
+}
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Portfolio (Gallery) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.portfolio-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+    /* Add transition for the new effect */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* We'll keep the image zoom, but on the main item's hover */
+    transition: transform 0.4s ease;
+}
+
+/* New 3D hover effect for the whole item */
+.portfolio-item:hover {
+    /* transform: perspective(1000px) scale(1.03); */
+    box-shadow: 0 15px 30px rgba(195, 177, 225, 0.5);
+}
+
+/* This makes the image zoom *inside* the 3D-tilted card */
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Form Styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--text-color); /* Uses main text color */
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.75rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--secondary-color);
+}
+
+/* ✨ Cute Button */
+.btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color); /* Uses main text color */
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.btn:hover {
+    background-color: var(--primary-color);
+    color: var(--container-color);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(195, 177, 225, 0.7);
+}
+
+/* --- Footer (Fixed Version) --- */
+footer {
+    text-align: center;
+    padding: 1.2rem;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+    /* --- ADD THESE 4 LINES --- */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* --- 💖 3D Social Icons --- */
+
+/* Adjust the copyright text margin */
+footer p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.social-icon {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    background-color: var(--text-color-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* 3D and animation setup */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    transform: perspective(1000px); /* Prepare for 3D */
+}
+
+/* 3D Animated Hover Effect */
+.social-icon:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: perspective(1000px) translateY(-5px) rotateX(15deg) scale(1.1);
+    color: var(--container-color); /* White text */
+}
+
+/* Cute hover colors! */
+#social-insta:hover {
+    background: linear-gradient(45deg, #f09433 0%,#e61e6e 50%,#8a3ab9 100%);
+}
+#social-wa:hover {
+    background-color: #25D366;
+}
+#social-git:hover {
+    background-color: #333;
+}
+#social-email:hover {
+    background-color: var(--secondary-color); /* Pink */
+}
+
+/* --- 💡 Theme Toggle Button --- */
+nav ul li.theme-toggle-li {
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--container-color);
+}
+
+/* --- Price Notification --- */
+.price-note {
+    display: none; /* Hidden by default */
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--service-card-bg); /* Use a light bg */
+    border: 2px dashed var(--primary-color);
+    border-radius: 15px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+/* --- 💖 Mouse Sparkle Effect --- */
+
+/* This defines the particle itself */
+.particle {
+    position: fixed; /* Stays in the viewport */
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    z-index: 9999;
+    
+    /* This is crucial! It lets you click "through" the particles */
+    pointer-events: none;
+    
+    /* Use our new animation */
+    animation: sparkle 0.8s forwards ease-out;
+}
+
+/* This is the animation */
+@keyframes sparkle {
+    0% {
+        /* Start at full size and opacity */
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        /* End at zero size, faded out, and moved */
+        opacity: 0;
+        /* It will move to the random --x and --y values we set in JavaScript */
+        transform: scale(0) translate(var(--x, 0), var(--y, 0));
+    }
+}
+
+/* --- ⌨️ Typing Particle Effect --- */
+.typing-particle {
+    position: absolute; /* Positioned relative to the page */
+    width: 6px;
+    height: 6px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    
+    /* New animation for a 'burst' effect */
+    animation: burst 0.6s forwards ease-out;
+}
+
+@keyframes burst {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        /* Move in a random arc, up and out */
+        transform: scale(0) translate(var(--x, 0), var(--y, -50px));
+    }
+}

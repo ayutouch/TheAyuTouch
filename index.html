@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cute Website</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo" data-page="home">🌸 BloomingTwins</a>
+        <ul>
+            <li><a href="#" data-page="home" class="nav-link active-link">Home</a></li>
+            <li><a href="#" data-page="about" class="nav-link">About</a></li>
+            <li><a href="#" data-page="services" class="nav-link">Services</a></li>
+            <li><a href="#" data-page="portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#" data-page="contact" class="nav-link">Contact Us</a></li>
+            <li><a href="#" data-page="booking" class="nav-link">Book Now</a></li>
+            <li class="theme-toggle-li">
+                <button id="theme-toggle" class="theme-btn">🌙</button>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="home" class="page active">
+            <div class="container">
+                <h1>Welcome to our Cute World!</h1>
+                <p>This is a magical place built with lavender dreams and pink skies.</p>
+                <button class="btn" id="home-learn-more">Learn More About Us!</button>
+            </div>
+        </section>
+
+        <section id="about" class="page">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>Welcome to our little world of magic and creativity! 🌸</p>
+                <p>Hi there! We’re <strong>BloomingTwins</strong>, a team (or “we”) passionate about bringing joy, color, and a touch of whimsy to everything we do. From adorable web designs to handy tech solutions, our goal is to make life a little brighter — one project at a time.</p>
+                <p>We believe that even small details can spark big smiles. Every creation we make is filled with love, care, and a playful touch, just for you.</p>
+                <p>Come explore our world of sparkles, creativity, and happy vibes! ✨</p>
+            </div>
+        </section>
+
+        <section id="services" class="page">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>We offer a variety of technical and creative services.</p>
+                
+                <div class="services-grid">
+
+                    <article class="service-card">
+                        <div class="icon">📝</div>
+                        <h3>Google Form Creation</h3>
+                        <p>Designing custom forms, quizzes, and surveys for you.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">🔗</div>
+                        <h3>Google Form to Sheet</h3>
+                        <p>Automatically connect your Google Form responses to a Sheet.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">💻</div>
+                        <h3>HTML Form to Sheet</h3>
+                        <p>Link your custom website form directly to a Google Sheet.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">💽</div>
+                        <h3>OS Installation</h3>
+                        <p>Fresh installs of Windows or your favorite Linux distro.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">🔄</div>
+                        <h3>Dual Boot Setup</h3>
+                        <p>Run Windows and Linux side-by-side on the same computer.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">🎮</div>
+                        <h3>Offline Games</h3>
+                        <p>Assistance with downloading games for offline play.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="icon">💾</div>
+                        <h3>Bootable USB Creation</h3>
+                        <p>Creating bootable USB drives for OS or recovery tools.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="page">
+            <div class="container">
+                <h2>Our Portfolio</h2>
+                <p>Here's a gallery of our past work. (These are placeholders, of course!)</p>
+                <div class="portfolio-grid">
+                    <figure class="portfolio-item">
+                        <img src="img/1.webp" alt="Portfolio Project 1">
+                    </figure>
+                    <figure class="portfolio-item">
+                        <img src="img/1.webp" alt="Portfolio Project 2">
+                    </figure>
+                    <figure class="portfolio-item">
+                        <img src="img/1.webp" alt="Portfolio Project 3">
+                    </figure>
+                    <figure class="portfolio-item">
+                        <img src="img/1.webp" alt="Portfolio Project 4">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you! Send us a message.</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" rows="5" placeholder="Your sweet message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send on WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="form" class="page">
+            <div class="container">
+                <h2>Join Our Newsletter!</h2>
+                <p>Get cute updates and special offers sent right to your inbox.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="form-name">First Name</label>
+                        <input type="text" id="form-name" placeholder="E.g., Lily">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">Email Address</label>
+                        <input type="email" id="form-email" placeholder="lily@example.com">
+                    </div>
+                    <button type="submit" class="btn">Sign Up!</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 📝 BOOKING PAGE -->
+        <section id="booking" class="page">
+            <div class="container">
+                <h2>Book Our Services</h2>
+                <p>Interested in one of our services? Fill out the form below!</p>
+
+                <form id="service-booking-form">
+                    <div class="form-group">
+                        <label for="book-name">Your Name</label>
+                        <input type="text" id="book-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-phone">Contact Number</label>
+                        <input type="tel" id="book-phone" name="phone" placeholder="Your contact number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-email">Your Email</label>
+                        <input type="email" id="book-email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-service">Which service do you need?</label>
+                        <select id="book-service" name="service" required>
+                            <option value="">-- Select a service --</option>
+                            <option value="Google Form Creation" data-price="₹100 – ₹250 Based on questions">Google Form Creation 📝</option>
+                            <option value="Google Form to Sheet" data-price="₹150 – ₹300 Based on questions">Google Form to Sheet 🔗</option>
+                            <option value="HTML Form to Sheet" data-price="₹200 – ₹350 Based on questions">HTML Form to Sheet 💻</option>
+                            <option value="OS Installation" data-price="₹250 – ₹300">OS Installation 💽</option>
+                            <option value="Dual Boot Setup" data-price="₹350">Dual Boot Setup 🔄</option>
+                            <option value="Offline Games Setup" data-price="₹100 – ₹250 per game based on game size">Offline Games Setup 🎮</option>
+                            <option value="Bootable USB Creation" data-price="₹100 – ₹150 per USB">Bootable USB Creation 💾</option>
+                        </select>
+                        
+                        <div id="price-notification" class="price-note"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-message">Additional Details</label>
+                        <textarea id="book-message" rows="4" placeholder="Tell us more about your project...ex: Game Name"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Book Now</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/theayutouch" class="social-icon" id="social-insta" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919448760729" class="social-icon" id="social-wa" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:theayutouch64@gmail.com" class="social-icon" id="social-email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <p>© 2025 BloomingTwins. All rights reserved. ✨</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>
