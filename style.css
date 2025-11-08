@@ -542,7 +542,7 @@ nav ul li.theme-toggle-li {
     left: 0;
     width: 100%;
     min-height: 100%; /* <-- FIXED */
-    background-image: url('../img/about-bg.png'); /* Adjust path if needed */
+    background-image: url('img/about-bg.png'); /* Adjust path if needed */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -566,4 +566,5 @@ nav ul li.theme-toggle-li {
 body.dark-mode #about .container {
     background-color: rgba(62, 53, 97, 0.7); 
     border: 1px solid rgba(255, 255, 255, 0.1);
+
 }
