@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo = document.querySelector('.logo');
     const homeLearnMoreButton = document.getElementById('home-learn-more');
     
-    // --- NEW: Hamburger Menu ---
+    // --- Hamburger Menu ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const navList = document.querySelector('.nav-links'); // Get the <ul>
-    const nav = document.querySelector('nav'); // Get the <nav>
+    const navList = document.querySelector('.nav-links'); 
+    const nav = document.querySelector('nav'); 
 
     // Toggle menu on hamburger click
     if (hamburgerBtn) {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pageId = link.getAttribute('data-page');
             showPage(pageId);
             
-            // --- NEW: Close menu on link click ---
+            // Close menu on link click
             navList.classList.remove('nav-open');
             nav.classList.remove('menu-open');
         });
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage('about');
         });
     }
+    // --- End of Page Switching Logic ---
 
     // --- 💡 Dark Mode Toggle Logic ---
     const themeToggle = document.getElementById('theme-toggle');
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(newTheme);
     });
 
-    // --- 💸 NEW: Price Display Logic ---
+    // --- 💸 Price Display Logic ---
     const bookingSelect = document.getElementById('book-service');
     const priceDisplay = document.getElementById('price-notification');
 
@@ -101,11 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    // --- End of Price Display Logic ---
-
     
-    // --- 🧠 NEW: 3D Mouse-Move Tilt Effect ---
-    const tiltCards = document.querySelectorAll('.service-card, .portfolio-item, #booking .container, #contact .container');
+    // --- 🧠 3D Mouse-Move Tilt Effect (Applied to cards and containers) ---
+    const tiltCards = document.querySelectorAll('.service-card, .portfolio-item, #booking .container, #contact .container, #download .container .game-card');
     
     tiltCards.forEach(card => {
         const maxTilt = 15; 
@@ -115,11 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const { width, height, left, top } = card.getBoundingClientRect();
             const x = e.clientX - left; 
             const y = e.clientY - top;  
-            const xPct = (x / width) - 0.5;  
+            const xPct = (x / width) - 0.5; 
             const yPct = (y / height) - 0.5; 
             const rotateY = xPct * maxTilt;
             const rotateX = -1 * yPct * maxTilt;
-            const scale = card.classList.contains('service-card') ? 'scale(1.05)' : 'scale(1.03)';
+            const scale = card.classList.contains('service-card') || card.classList.contains('game-card') ? 'scale(1.05)' : 'scale(1.03)';
             card.style.transform = `perspective(1000px) ${scale} rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }
 
@@ -136,9 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    // --- End of 3D Tilt Effect ---
-
-    // --- 📞 NEW: Contact Form to WhatsApp ---
+    
+    // --- 📞 Contact Form to WhatsApp ---
     const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
@@ -155,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
-    // --- End of Contact Form Logic ---
 
-    // --- 🚀 Form Submission Logic (Updated with Price & Phone) ---
+    // --- 🚀 Booking Form Submission Logic ---
     const bookingForm = document.getElementById('service-booking-form');
+    // NOTE: This URL is placeholder and needs to be your actual Google Script URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbydR4rJjydo04-wB4jV5tCPX8UvgI7XLhfao2H8PT_SakSYPrfqgLmXlczp-EmQy-le/exec'; 
 
     if (bookingForm) {
@@ -209,7 +207,129 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- ⌨️ NEW: Typing Particle Effect ---
+    // --- ⬇️ Download Animation and Timer Logic ⬇️ ---
+    const downloadButtons = document.querySelectorAll('.download-btn');
+    const modal = document.getElementById('download-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const downloadIcon = document.getElementById('download-icon');
+    const modalTitle = document.getElementById('modal-title');
+    const progressBar = document.getElementById('progress-bar');
+    const timerText = document.getElementById('timer-text');
+    const directLink = document.getElementById('direct-link');
+    const safeNote = document.getElementById('safe-note');
+
+    const downloadDuration = 5; // seconds
+
+    function openDownloadModal(downloadUrl) {
+        // Prevent opening if button is disabled (Coming Soon card)
+        if (event.target.classList.contains('disabled-btn')) return;
+
+        let timer = downloadDuration;
+        
+        // Reset modal state
+        modalTitle.textContent = 'Preparing Download...';
+        downloadIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        progressBar.style.width = '0%';
+        directLink.style.display = 'none';
+        timerText.style.display = 'block';
+        safeNote.style.display = 'block';
+        modal.style.display = 'block';
+
+        const interval = setInterval(() => {
+            timer--;
+
+            // Update progress bar
+            const progress = (downloadDuration - timer) / downloadDuration * 100;
+            progressBar.style.width = `${progress}%`;
+
+            if (timer > 0) {
+                timerText.textContent = `Starting in ${timer} seconds...`;
+            } else {
+                clearInterval(interval);
+                
+                // Final state: Download ready
+                modalTitle.textContent = 'Download Starting! 🎉';
+                downloadIcon.innerHTML = '<i class="fas fa-circle-check"></i>';
+                progressBar.style.width = '100%';
+                timerText.textContent = 'Transfer Complete!';
+                safeNote.style.display = 'none';
+                
+                // Trigger the file download
+                const tempLink = document.createElement('a');
+                tempLink.href = downloadUrl;
+                tempLink.setAttribute('download', ''); 
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                // Show manual link as a backup
+                directLink.href = downloadUrl;
+                directLink.textContent = 'Click to Start Download (Backup)';
+                directLink.style.display = 'block';
+            }
+        }, 1000);
+
+        // Close logic
+        closeBtn.onclick = function() {
+            clearInterval(interval);
+            modal.style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                clearInterval(interval);
+                modal.style.display = 'none';
+            }
+        }
+    }
+
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const gameUrl = e.currentTarget.getAttribute('data-game-url');
+            if (gameUrl) {
+                openDownloadModal(gameUrl);
+            }
+        });
+    });
+    // --- End of Download Logic ---
+
+    // --- 🖼️ CORRECTED: Portfolio Modal Logic ---
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const portfolioModal = document.getElementById('portfolio-modal');
+    const fullImage = document.getElementById('full-portfolio-image');
+    const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const imgSrc = item.querySelector('img').src;
+            
+            fullImage.src = imgSrc;
+            
+            // FIX: Use classList to show the modal
+            portfolioModal.classList.add('show');
+            
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closePortfolioModal() {
+        // FIX: Use classList to hide the modal
+        portfolioModal.classList.remove('show');
+        document.body.style.overflow = 'auto'; 
+    }
+
+    // Close modal when the X is clicked
+    modalCloseBtn.addEventListener('click', closePortfolioModal);
+
+    // Close modal when clicking outside the image (on the modal backdrop)
+    portfolioModal.addEventListener('click', (event) => {
+        if (event.target === portfolioModal) {
+            closePortfolioModal();
+        }
+    });
+    // --- End Portfolio Modal Logic ---
+
+    // --- ⌨️ Typing Particle Effect ---
     const formInputs = document.querySelectorAll(
         '.form-group input, .form-group textarea'
     );
@@ -253,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // --- End of Typing Particle Effect ---
 
-    // --- 💖 NEW: Mouse Sparkle Trail ---
-    let isMouseThrottled = false; // Renamed to avoid conflict
+    // --- 💖 Mouse Sparkle Trail ---
+    let isMouseThrottled = false; 
     const sparkleColors = [
         'var(--primary-color)',
         'var(--secondary-color)',
@@ -262,10 +382,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     document.addEventListener('mousemove', (e) => {
-        if (isMouseThrottled) return; // Use the renamed variable
-        isMouseThrottled = true; // Use the renamed variable
+        if (isMouseThrottled) return; 
+        isMouseThrottled = true; 
         setTimeout(() => {
-            isMouseThrottled = false; // Use the renamed variable
+            isMouseThrottled = false; 
         }, 50);
 
         const particle = document.createElement('div');

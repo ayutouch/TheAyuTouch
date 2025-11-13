@@ -2,10 +2,10 @@
 :root {
     /* Light Mode (Default) */
     --bg-color: #FDF7FF;
-    --primary-color: #C3B1E1;
-    --secondary-color: #FFC7EA;
-    --text-color: #2D2A4A; /* CHANGED to a very dark purple */
-    --text-color-light: #FDF7FF; /* This is your very light text for footer/home */
+    --primary-color: #C3B1E1; /* Lavender */
+    --secondary-color: #FFC7EA; /* Light Pink */
+    --text-color: #2D2A4A; /* Very Dark Purple */
+    --text-color-light: #FDF7FF; 
     --container-color: #FFFFFF;
     --service-card-bg: #FDF7FF;
     --container-shadow: rgba(195, 177, 225, 0.3);
@@ -17,8 +17,8 @@ body.dark-mode {
     --bg-color: #2D2A4A;
     --primary-color: #C3B1E1;
     --secondary-color: #FFC7EA;
-    --text-color: #F0EAFE; /* Main text is light in dark mode */
-    --text-color-light: #F0EAFE; /* Footer/home text is also light */
+    --text-color: #F0EAFE; 
+    --text-color-light: #F0EAFE; 
     --container-color: #3E3561;
     --service-card-bg: #4A4178;
     --container-shadow: rgba(0, 0, 0, 0.2);
@@ -37,20 +37,20 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    /* UPDATED: Fixed footer padding */
+    /* Adjusted padding to accommodate smaller footer */
     padding-bottom: 110px; 
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3 {
-    color: var(--text-color); /* Uses main text color */
+    color: var(--text-color); 
     margin-bottom: 1rem;
     font-weight: 700;
 }
 
 p {
     margin-bottom: 1rem;
-    color: var(--text-color); /* Uses main text color */
+    color: var(--text-color); 
 }
 
 .container {
@@ -60,11 +60,10 @@ p {
     background-color: var(--container-color);
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--container-shadow);
-    transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease; /* Added transform */
+    transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-/* ---  navegación (Navigation) --- */
-/* NEW: <header> is used to wrap nav */
+/* --- navegación (Navigation) --- */
 header {
     background-color: var(--container-color);
     box-shadow: 0 4px 15px var(--nav-shadow);
@@ -79,18 +78,18 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    max-width: 1200px; /* Constrain nav width */
-    margin: 0 auto; /* Center nav */
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 nav .logo {
     text-decoration: none;
-    z-index: 1002; /* Keep logo on top of mobile menu */
-    display: block; /* Helps with alignment */
+    z-index: 1002; 
+    display: block; 
 }
 nav .logo img {
-    height: 40px;  /* <-- You can adjust this height! */
-    display: block; /* Fixes extra spacing */
+    height: 40px; 
+    display: block; 
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
@@ -107,7 +106,7 @@ nav .logo:hover img {
 
 .nav-links li a {
     text-decoration: none;
-    color: var(--text-color); /* Uses main text color */
+    color: var(--text-color); 
     font-weight: 700;
     padding: 5px 10px;
     border-radius: 5px;
@@ -121,15 +120,15 @@ nav .logo:hover img {
     transform: scale(1.1);
 }
 
-/* --- 🍔 NEW: Hamburger Button --- */
+/* --- Hamburger Button --- */
 .hamburger-btn {
-    display: none; /* Hidden on desktop */
+    display: none; 
     background: none;
     border: none;
     color: var(--primary-color);
     font-size: 1.8rem;
     cursor: pointer;
-    z-index: 1002; /* Keep button on top of mobile menu */
+    z-index: 1002; 
 }
 .hamburger-btn .fa-xmark {
     display: none;
@@ -142,45 +141,43 @@ nav.menu-open .hamburger-btn .fa-bars {
 }
 
 
-/* --- 📄 Page Switching Logic (FIXED) --- */
+/* --- Page Switching Logic --- */
 main {
     position: relative;
-    /* This prevents margin collapse from the .container */
     padding-top: 1px;
     margin-top: -1px;
 }
 
 .page {
-    /* Hides pages by default, removing them from the layout */
     display: none;
     width: 100%;
-    
-    /* Set up the animation for when it appears */
-    animation: fadeInPage 0.5s ease-out forwards;
+    /* 🌸 Apply the cute, blooming animation */
+    animation: fadeInPage 0.6s ease-out forwards;
 }
 
 .page.active {
-    /* Show the active page */
     display: block;
-    
-    /* NEW: Make page fill at least the viewable screen */
-    /* 100vh - (approx 60px for nav) - (110px for footer padding) */
     min-height: calc(100vh - 170px); 
 }
 
-/* This new keyframe animation will handle the fade-in */
+/* 🌸 Page Transition Keyframes (Soft Blooming Effect) */
 @keyframes fadeInPage {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px) scale(0.98);
+        filter: blur(4px);
+    }
+    30% {
+        opacity: 0.5;
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+        filter: blur(0);
     }
 }
 
-/* --- 🎨 Page-Specific Styles --- */
+/* --- Page-Specific Styles --- */
 
 /* Home (Landing Page) */
 #home .container {
@@ -256,7 +253,7 @@ main {
 .form-group label {
     margin-bottom: 0.5rem;
     font-weight: 700;
-    color: var(--text-color); /* Uses main text color */
+    color: var(--text-color); 
 }
 .form-group input,
 .form-group textarea,
@@ -277,7 +274,7 @@ main {
     box-shadow: 0 0 10px var(--secondary-color);
 }
 
-/* --- NEW: Security Note Style --- */
+/* Security Note Style */
 .security-note {
     font-size: 0.9rem;
     font-style: italic;
@@ -288,10 +285,10 @@ main {
     margin-bottom: 1.5rem;
 }
 
-/* ✨ Cute Button */
+/* Cute Button */
 .btn {
     background-color: var(--secondary-color);
-    color: var(--text-color); /* Uses main text color */
+    color: var(--text-color); 
     font-weight: 700;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -310,7 +307,8 @@ main {
 /* --- Footer (Fixed Version) --- */
 footer {
     text-align: center;
-    padding: 1.2rem;
+    /* REDUCED SIZE */
+    padding: 0.8rem; 
     background-color: var(--primary-color);
     color: var(--text-color-light);
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
@@ -320,29 +318,33 @@ footer {
     width: 100%;
     z-index: 100;
     transition: background-color 0.3s ease, color 0.3s ease;
-    
-    /* UPDATED: Stacks links and text */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    line-height: 1.2;
 }
-/* --- 💖 3D Social Icons --- */
+
+/* 💖 3D Social Icons */
 footer p {
     margin-bottom: 0;
-    font-size: 0.9rem;
+    /* REDUCED SIZE */
+    font-size: 0.8rem; 
 }
 .social-links {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
+    /* REDUCED SIZE */
+    gap: 0.8rem; 
+    margin-bottom: 0.5rem; 
 }
 .social-icon {
-    font-size: 1.1rem;
+    /* REDUCED SIZE */
+    font-size: 0.9rem; 
+    width: 35px; 
+    height: 35px; 
+    
     color: var(--primary-color);
     background-color: var(--text-color-light);
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -350,12 +352,12 @@ footer p {
     text-decoration: none;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-    transform: perspective(1000px); /* Prepare for 3D */
+    transform: perspective(1000px); 
 }
 .social-icon:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     transform: perspective(1000px) translateY(-5px) rotateX(15deg) scale(1.1);
-    color: var(--container-color); /* White text */
+    color: var(--container-color); 
 }
 #social-insta:hover {
     background: linear-gradient(45deg, #f09433 0%,#e61e6e 50%,#8a3ab9 100%);
@@ -364,10 +366,10 @@ footer p {
     background-color: #25D366;
 }
 #social-email:hover {
-    background-color: var(--secondary-color); /* Pink */
+    background-color: var(--secondary-color); 
 }
 
-/* --- 💡 Theme Toggle Button --- */
+/* 💡 Theme Toggle Button */
 nav ul li.theme-toggle-li {
     display: flex;
     align-items: center;
@@ -391,7 +393,7 @@ nav ul li.theme-toggle-li {
     color: var(--container-color);
 }
 
-/* --- Price Notification --- */
+/* Price Notification */
 .price-note {
     display: none; 
     margin-top: 1rem;
@@ -405,7 +407,374 @@ nav ul li.theme-toggle-li {
     text-align: center;
     transition: all 0.3s ease;
 }
-/* --- 💖 Mouse Sparkle Effect --- */
+
+/* 🎮 Download Page Styles */
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.game-card {
+    background-color: var(--service-card-bg);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 3px solid var(--secondary-color);
+    box-shadow: 0 5px 20px var(--container-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative; 
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(255, 199, 234, 0.8);
+}
+
+.game-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    border: 2px solid var(--primary-color);
+}
+
+.game-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.game-card p {
+    font-size: 0.95rem;
+    min-height: 40px; 
+    opacity: 0.8;
+}
+
+.game-card .meta {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* --- Coming Soon Specific Styles & Animations --- */
+.coming-soon-card .game-thumbnail {
+    filter: grayscale(100%) brightness(70%);
+    transition: filter 0.3s ease;
+}
+
+.coming-soon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(195, 177, 225, 0.9); /* Semi-transparent Lavender */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    opacity: 0; 
+    transition: opacity 0.4s ease-out; 
+    pointer-events: none; 
+}
+
+.coming-soon-card:hover .coming-soon-overlay {
+    opacity: 1; 
+}
+
+.overlay-text {
+    color: var(--text-color-light); 
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.8); 
+    opacity: 0;
+    /* Uses custom bounce transition */
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease-out; 
+}
+
+.coming-soon-card:hover .overlay-text {
+    transform: translateY(0) scale(1); 
+    opacity: 1;
+    transition-delay: 0.1s; 
+}
+
+.disabled-btn {
+    background-color: var(--primary-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+    /* Add subtle pulse animation to the button */
+    animation: pulse 2s infinite; 
+}
+
+.disabled-btn:hover {
+    transform: none;
+    box-shadow: 0 0 0 0 rgba(255, 199, 234, 0); 
+    background-color: var(--primary-color); 
+}
+
+/* Button Pulse Animation */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 199, 234, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 199, 234, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 199, 234, 0); }
+}
+
+/* Sparkle Burst for Coming Soon Overlay */
+.sparkle-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px 5px var(--secondary-color),
+        0 0 20px 10px var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.coming-soon-card:hover .sparkle-burst {
+    animation: sparkleGrow 0.8s forwards ease-out;
+}
+
+@keyframes sparkleGrow {
+    0% { width: 0; height: 0; opacity: 1; }
+    50% { width: 50px; height: 50px; opacity: 0.8; }
+    100% { width: 150px; height: 150px; opacity: 0; }
+}
+
+/* Floating Flower Particles (🌸) */
+.floating-flower {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    opacity: 0;
+    pointer-events: none;
+    animation: none;
+}
+
+.coming-soon-card:hover .floating-flower {
+    opacity: 1;
+    animation: floatUp 3s infinite ease-out;
+}
+
+.flower-1 { 
+    bottom: 20%; left: 10%; 
+    animation-delay: 0.5s;
+}
+.flower-2 { 
+    bottom: 30%; right: 15%; 
+    animation-delay: 1.2s;
+}
+.flower-3 { 
+    bottom: 10%; left: 45%; 
+    animation-delay: 2s;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.5; }
+    50% { transform: translateY(-150px) rotate(15deg) scale(1.1); opacity: 1; }
+    100% { transform: translateY(-300px) rotate(0deg) scale(0.9); opacity: 0; }
+}
+
+
+/* ⬇️ Download Modal Styles (Animation) ⬇️ */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--container-color);
+    margin: 15% auto; 
+    padding: 30px;
+    border-radius: 25px;
+    border: 5px solid var(--primary-color);
+    width: 80%; 
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(195, 177, 225, 0.8);
+    position: relative;
+    animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+#download-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    height: 64px; 
+}
+
+#download-icon .fa-spinner {
+    animation: rotate 1s linear infinite;
+}
+
+/* Success icon animation (check mark) */
+#download-icon .fa-circle-check {
+    color: #4CAF50; 
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#progress-bar-container {
+    width: 90%;
+    background-color: var(--bg-color);
+    margin: 1rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+}
+
+#progress-bar {
+    width: 0%;
+    height: 25px;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    transition: width 1s linear; 
+}
+
+#timer-text, #safe-note {
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+#direct-link {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+/* --- 🖼️ CORRECTED: Portfolio Fullscreen Modal Styles --- */
+
+.modal-portfolio {
+    display: flex; /* Use flex for centering */
+    position: fixed;
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(8px);
+    
+    /* FIX: Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+/* NEW: 'show' class to be toggled by JS */
+.modal-portfolio.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--primary-color);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    text-shadow: 0 0 5px var(--secondary-color);
+    animation: floatHeart 2s infinite alternate;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: var(--secondary-color);
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes floatHeart {
+    from { transform: translateY(0px) scale(1); }
+    to { transform: translateY(-5px) scale(1.05); }
+}
+
+/* Image styling */
+.modal-image {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    object-fit: contain; 
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(195, 177, 225, 0.8);
+    
+    /* Animation: Start in a 'hidden' state */
+    transform: translateY(50px) scale(0.5) rotate(5deg);
+    opacity: 0;
+}
+
+/* Animation: Play when the modal is 'show'n */
+.modal-portfolio.show .modal-image {
+    animation: slideInImage 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+
+@keyframes slideInImage {
+    0% { transform: translateY(50px) scale(0.5) rotate(5deg); opacity: 0; }
+    100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Dark Mode adjustment */
+body.dark-mode .modal-portfolio {
+    background-color: rgba(45, 42, 74, 0.98); /* Dark background in dark mode */
+}
+/* ---------------------------------------------------- */
+
+
+/* 💖 Mouse Sparkle Effect */
 .particle {
     position: fixed; 
     top: 0;
@@ -429,7 +798,7 @@ nav ul li.theme-toggle-li {
     }
 }
 
-/* --- ⌨️ Typing Particle Effect --- */
+/* ⌨️ Typing Particle Effect */
 .typing-particle {
     position: absolute; 
     width: 6px;
@@ -452,10 +821,10 @@ nav ul li.theme-toggle-li {
 }
 
 
-/* --- 📱 NEW: Responsive Media Query --- */
+/* 📱 Responsive Media Query */
 @media (max-width: 850px) {
 
-    /* --- Mobile Nav --- */
+    /* Mobile Nav */
     .nav-links {
         position: fixed;
         top: 0;
@@ -492,9 +861,10 @@ nav ul li.theme-toggle-li {
         padding: 1rem 1.5rem; 
     }
     
-    /* --- General Mobile Styles --- */
+    /* General Mobile Styles */
+    /* Adjusted padding to fit smaller footer */
     body {
-        padding-bottom: 95px;
+        padding-bottom: 80px;
     }
     
     .container {
@@ -506,24 +876,31 @@ nav ul li.theme-toggle-li {
         font-size: 2.2rem; 
     }
     
-    /* --- Mobile Footer --- */
+    /* Mobile Footer Adjustments */
     footer {
-        padding: 1rem;
+        padding: 0.6rem; /* Even smaller padding on mobile */
     }
     
     .social-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
+        width: 30px; /* Slightly smaller icons on mobile */
+        height: 30px;
+        font-size: 0.9rem;
     }
     
     .social-links {
-        gap: 0.75rem;
-        margin-bottom: 0.5rem;
+        gap: 0.6rem; /* Smaller gap on mobile */
+        margin-bottom: 0.3rem; /* Smaller margin on mobile */
     }
     
     footer p {
-        font-size: 0.8rem;
+        font-size: 0.7rem; /* Even smaller font on mobile */
+    }
+
+    /* Mobile Modal Adjustment */
+    .modal-close-btn {
+        top: 15px;
+        right: 15px;
+        font-size: 32px;
     }
 }
 
@@ -541,8 +918,8 @@ nav ul li.theme-toggle-li {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100%; /* <-- FIXED */
-    background-image: url('img/about-bg.png'); /* Adjust path if needed */
+    min-height: 100%; 
+    background-image: url('img/about-bg.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -566,5 +943,4 @@ nav ul li.theme-toggle-li {
 body.dark-mode #about .container {
     background-color: rgba(62, 53, 97, 0.7); 
     border: 1px solid rgba(255, 255, 255, 0.1);
-
 }
