@@ -944,3 +944,19 @@ body.dark-mode #about .container {
     background-color: rgba(62, 53, 97, 0.7); 
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* --- 🚀 NEW: Lazy Load Image Fade-in --- */
+.portfolio-item img, .game-thumbnail {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.portfolio-item img[src], .game-thumbnail[src] {
+    opacity: 1;
+}
+
+/* Fallback for browsers that don't support lazy loading */
+@supports not (loading: lazy) {
+    .portfolio-item img, .game-thumbnail {
+        opacity: 1;
+    }
+}
